@@ -12,6 +12,11 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
+const corsOptions = {
+  origin: "https://registration-doc.vercel.app/",  // Replace with your frontend URL
+  methods: ["GET", "POST", "PUT", "DELETE"],  // Allow only specific methods
+  credentials: true,  // If you're using cookies or authentication
+};
 // Database connection
 const db = mysql.createConnection({
     host: process.env.DB_HOST,
