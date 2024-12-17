@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import Toastify CSS
+import "./AddEmployeeForm.css";
+
 
 const AddEmployeeForm = () => {
     const [formData, setFormData] = useState({
@@ -11,21 +15,17 @@ const AddEmployeeForm = () => {
         date_of_joining: "",
         role: "",
     });
-    const [error, setError] = useState("");
-    const [success, setSuccess] = useState("");
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
-        setError("");
-        setSuccess("");
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const res = await axios.post("http://localhost:5000/api/employees", formData);
-            setSuccess(res.data);
+            const res = await axios.post("https://registration-form-kappa-one.vercel.app/", formData);
+            toast.success(res.data, { position: "top-center" }); // Display success notification
             setFormData({
                 employee_id: "",
                 name: "",
@@ -36,7 +36,8 @@ const AddEmployeeForm = () => {
                 role: "",
             });
         } catch (err) {
-            setError(err.response?.data || "An error occurred.");
+            const errorMessage = err.response?.data || "An error occurred.";
+            toast.error(errorMessage, { position: "top-center" }); // Display error notification
         }
     };
 
@@ -121,12 +122,20 @@ const AddEmployeeForm = () => {
                     />
                 </div>
                 <button type="submit">Submit</button>
-                <button type="reset" onClick={() => setFormData({})}>
+                <button type="reset" onClick={() => setFormData({
+                    employee_id: "",
+                    name: "",
+                    email: "",
+                    phone: "",
+                    department: "",
+                    date_of_joining: "",
+                    role: "",
+                })}>
                     Reset
                 </button>
             </form>
-            {error && <p style={{ color: "red" }}>{error}</p>}
-            {success && <p style={{ color: "green" }}>{success}</p>}
+            {/* Toast Container to display notifications */}
+            <ToastContainer />
         </div>
     );
 };
