@@ -24,7 +24,8 @@ const AddEmployeeForm = () => {
         e.preventDefault();
 
         try {
-            const res = await axios.post("https://registration-form-kappa-one.vercel.app/", formData);
+            const res = await axios.post("https://registration-form-kappa-one.vercel.app/api/employees", formData);
+            
             toast.success(res.data, { position: "top-center" }); // Display success notification
             setFormData({
                 employee_id: "",
