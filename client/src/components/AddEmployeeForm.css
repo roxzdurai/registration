@@ -1,0 +1,152 @@
+/* styles.css */
+
+/* General Reset */
+body, h1, p, form, div, label, input, select, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of the viewport */
+    overflow: hidden; /* Prevent scrolling */
+    margin: 0;
+}
+
+/* Form Container */
+form {
+    background: #ffffff;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 600px; /* Ensure form doesn't grow too wide */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden; /* No internal scroll */
+}
+
+/* Form Header */
+h1 {
+    text-align: center;
+    font-size: 24px;
+    color: #444;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+}
+
+/* Form Elements */
+form div {
+    margin-bottom: 10px; /* Adjust spacing between inputs */
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+    font-size: 14px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus,
+select:focus {
+    border-color: #6e8efb;
+    outline: none;
+    box-shadow: 0 0 8px rgba(110, 142, 251, 0.5);
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+}
+
+button[type="submit"] {
+    background-color: #6e8efb;
+    color: #fff;
+}
+
+button[type="submit"]:hover {
+    background-color: #5a7bec;
+    transform: translateY(-2px);
+}
+
+button[type="reset"] {
+    background-color: #ff6b6b;
+    color: #fff;
+}
+
+button[type="reset"]:hover {
+    background-color: #e55a5a;
+    transform: translateY(-2px);
+}
+
+/* Error and Success Messages */
+p {
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+p[style*="color: red"] {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+
+p[style*="color: green"] {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+}
+
+/* Responsive Design */
+@media (max-height: 600px) {
+    form {
+        height: 90%; /* Adjust for smaller viewport heights */
+        overflow-y: auto; /* Allow vertical scrolling only when necessary */
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px; /* Add padding for smaller screens */
+    }
+
+    form {
+        width: 90%; /* Adjust form width on smaller screens */
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
